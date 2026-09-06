@@ -8,10 +8,10 @@ import {
 import './App.css'
 
 const images = {
-  hero: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=90',
-  residential: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=85',
-  commercial: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1400&q=85',
-  land: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85',
+  hero: '/images/hero.jpg',
+  residential: '/images/residential.jpg',
+  commercial: '/images/commercial.jpg',
+  land: '/images/land.jpg',
 }
 
 const navItems = [
