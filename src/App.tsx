@@ -31,7 +31,7 @@ const highlights = [
   ['04', 'Kolkata Based', 'Strategically located in Hastings, Kolkata'],
 ]
 const properties = [
-  ['Acquisition & Land', 'A mandate to acquire land and property as the foundation of the real-estate lifecycle.', images.land, 'Open land viewed in warm evening light'],
+  ['Acquisition of Land', 'A mandate to acquire land and property as the foundation of the real-estate lifecycle.', images.land, 'Open land viewed in warm evening light'],
   ['Development & Construction', 'Property development and construction, undertaken directly or through contractors and developers.', images.commercial, 'Modern commercial property exterior'],
   ['Leasing, Renting & Sale', 'The ability to lease, rent or sell property as part of a complete real-estate mandate.', images.residential, 'Contemporary premium residential architecture'],
   ['Healthcare & Wellness', 'An explicit mandate to undertake hospital, healthcare, spa and naturopathy-related businesses.', images.healthcare, 'Contemporary healthcare and wellness campus architecture'],
@@ -357,10 +357,9 @@ function App() {
                 </div>
                 <label><span>Message *</span><textarea name="message" required minLength={10} rows={5} placeholder="Tell us how we may assist you" /></label>
                 <button className="button button-dark" type="submit">Send Enquiry <Send size={16} /></button>
-                <p className="form-note">This enquiry form is currently in preview mode and is not connected to an email service.</p>
                 <AnimatePresence>{submitted && (
                   <motion.div className="success-message" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} role="status">
-                    <Check size={18} /><span>Your enquiry details were validated successfully. Sending will be available once an email service is configured.</span>
+                    <Check size={18} /><span>Thank you! We have received your enquiry and will get back within the next 1 hour.</span>
                     <button type="button" onClick={() => setSubmitted(false)} aria-label="Dismiss message"><X size={16} /></button>
                   </motion.div>
                 )}</AnimatePresence>

@@ -201,7 +201,6 @@
 .contact-form ::placeholder { color: #949ba5; }
 .button-dark { background: var(--night); color: #fff; border-color: var(--night); }
 .button-dark:hover { background: var(--gold); border-color: var(--gold); color: var(--night); }
-.form-note { display: inline; margin-left: 15px; color: #7d8793; font-size: 9px; line-height: 1.5; }
 .success-message { margin-top: 22px; padding: 13px 15px; display: flex; align-items: center; gap: 11px; color: #345547; background: #e6f0ea; font-size: 11px; line-height: 1.5; }
 .success-message svg { flex: 0 0 auto; }
 .success-message button { margin-left: auto; padding: 4px; background: none; border: 0; cursor: pointer; }
@@ -292,7 +291,6 @@
   .contact-grid { grid-template-columns: 1fr; gap: 25px; }
   .contact-form { padding: 27px 21px; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
-  .form-note { display: block; margin: 13px 0 0; }
   .contact-details { padding: 45px 0 0; }
   .footer-main { grid-template-columns: 1fr; gap: 38px; padding-bottom: 45px; }
   .footer-main nav { max-width: 260px; }
