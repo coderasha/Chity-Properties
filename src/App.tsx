@@ -12,6 +12,7 @@ const images = {
   residential: '/images/residential.jpg',
   commercial: '/images/commercial.jpg',
   land: '/images/land.jpg',
+  healthcare: '/images/healthcare.jpg',
 }
 
 const officeAddress = '3, Middle Road, Hastings, Kolkata, West Bengal, India 700022'
@@ -24,21 +25,29 @@ const navItems = [
   ['Why Chity', '#why-chity'], ['Contact', '#contact'],
 ]
 const highlights = [
-  ['01', 'Strategic Approach', 'Thoughtful evaluation of real-estate opportunities'],
-  ['02', 'Quality Assets', 'A focus on property quality and long-term value'],
-  ['03', 'Trusted Relationships', 'Professional relationships built for the long term'],
+  ['01', 'Full Lifecycle', 'A mandate covering acquisition, financing, development, leasing and sale'],
+  ['02', 'Development', 'Construction and property development, including work through contractors and developers'],
+  ['03', 'Healthcare Mandate', 'The ability to undertake hospital, healthcare, spa and naturopathy-related businesses'],
   ['04', 'Kolkata Based', 'Strategically located in Hastings, Kolkata'],
 ]
 const properties = [
-  ['Residential Properties', 'Thoughtfully selected residential opportunities with a focus on location, quality and lasting value.', images.residential, 'Contemporary premium residential architecture'],
-  ['Commercial Properties', 'Commercial real estate opportunities positioned around strategic locations and practical value.', images.commercial, 'Modern commercial property exterior'],
-  ['Land & Development', 'Land and development opportunities evaluated with a long-term perspective.', images.land, 'Open land viewed in warm evening light'],
+  ['Acquisition & Land', 'A mandate to acquire land and property as the foundation of the real-estate lifecycle.', images.land, 'Open land viewed in warm evening light'],
+  ['Development & Construction', 'Property development and construction, undertaken directly or through contractors and developers.', images.commercial, 'Modern commercial property exterior'],
+  ['Leasing, Renting & Sale', 'The ability to lease, rent or sell property as part of a complete real-estate mandate.', images.residential, 'Contemporary premium residential architecture'],
+  ['Healthcare & Wellness', 'An explicit mandate to undertake hospital, healthcare, spa and naturopathy-related businesses.', images.healthcare, 'Contemporary healthcare and wellness campus architecture'],
+]
+const lifecycle = [
+  ['01', 'Acquire', 'Land and property'],
+  ['02', 'Finance', 'Property financing'],
+  ['03', 'Develop', 'Construction and development'],
+  ['04', 'Lease & Sale', 'Renting, leasing and sale'],
+  ['05', 'Partners', 'Contractors, developers and agents'],
 ]
 const principles = [
-  ['Thoughtful', 'Every property opportunity deserves careful consideration.', Compass],
-  ['Professional', 'A straightforward and professional approach to real estate.', ShieldCheck],
+  ['Thoughtful', 'Every property and development opportunity deserves careful consideration.', Compass],
+  ['Professional', 'A straightforward approach to real estate, development and related businesses.', ShieldCheck],
   ['Long-Term', 'Focused on sustainable value rather than short-term decisions.', Clock3],
-  ['Relationship Driven', 'Strong relationships are central to how we work.', Handshake],
+  ['Relationship Driven', 'Work may be undertaken directly or through contractors, developers and agents.', Handshake],
 ]
 const reveal = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } }
 
@@ -153,7 +162,7 @@ function App() {
                   transition={{ delay: index * 0.05 + 0.1 }}><small>0{index + 1}</small>{label}</motion.a>
               ))}
             </nav>
-            <p>Real Estate • Property • Opportunity</p>
+            <p>Real Estate • Development • Healthcare</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -164,9 +173,9 @@ function App() {
           <div className="hero-overlay" /><div className="hero-grid" aria-hidden="true" />
           <motion.div className="hero-content container" initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-            <span className="hero-eyebrow">Real Estate <i /> Property <i /> Opportunity</span>
-            <h1>Building Value Through <em>Exceptional</em> Real Estate</h1>
-            <p>Chity Properties Private Limited is engaged in the real estate and property sector, with a focus on quality assets, enduring value and trusted relationships.</p>
+            <span className="hero-eyebrow">Real Estate <i /> Development <i /> Healthcare</span>
+            <h1>Building Value Across the <em>Property Lifecycle</em></h1>
+            <p>Chity Properties Private Limited holds a broad real-estate and property-development mandate, covering acquisition, financing, construction, leasing, renting and sale, together with the ability to undertake hospital, healthcare, spa and naturopathy-related businesses.</p>
             <div className="hero-actions">
               <a className="button button-gold" href="#about">Explore Our Approach <ArrowRight size={17} /></a>
               <a className="button button-ghost" href="#contact">Get in Touch</a>
@@ -193,9 +202,9 @@ function App() {
               <motion.div className="about-copy" variants={reveal} initial="hidden" whileInView="visible"
                 viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.6, delay: 0.12 }}>
                 <span className="eyebrow">About Chity Properties</span>
-                <p className="lead">Chity Properties Private Limited is a real estate and property company based in Kolkata, West Bengal.</p>
-                <p>We focus on identifying, managing and creating value through real estate opportunities while maintaining a long-term perspective and a commitment to professionalism.</p>
-                <p>With our presence in Hastings, Kolkata, we operate with an appreciation for the importance of location, asset quality and lasting relationships.</p>
+                <p className="lead">Chity Properties Private Limited is a Kolkata-based company with a broad real-estate and property-development mandate.</p>
+                <p>That mandate covers the property lifecycle: acquiring land and property, financing, construction and development, and leasing, renting or sale. Work may be undertaken directly or through contractors, developers and agents.</p>
+                <p>The company also has an explicit ability to undertake hospital, healthcare, spa and naturopathy-related businesses. With our presence in Hastings, Kolkata, we operate with an appreciation for location, asset quality and lasting relationships.</p>
                 <p>Chity Properties is recognised under the Startup India initiative and is a participant in the Blockchain India Challenge, currently in the advanced MVP stage of the programme.</p>
               </motion.div>
             </div>
@@ -238,8 +247,18 @@ function App() {
 
         <section id="properties" className="properties-section section">
           <div className="container">
-            <SectionIntro eyebrow="Property Perspective" title="Our Real Estate Focus"
-              description="Opportunities grounded in location, quality and long-term value." />
+            <SectionIntro eyebrow="Our Mandate" title="The Full Property Lifecycle"
+              description="A broad real-estate and property-development mandate, from acquisition through development to leasing, sale and related healthcare businesses." />
+            <div className="lifecycle-strip" aria-label="Property lifecycle">
+              {lifecycle.map(([number, title, description], index) => (
+                <article key={number} className="lifecycle-step">
+                  <span>{number}</span>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  {index < lifecycle.length - 1 && <i aria-hidden="true" />}
+                </article>
+              ))}
+            </div>
             <div className="property-grid">
               {properties.map(([title, description, image, alt], index) => (
                 <motion.article className="property-card" key={title} variants={reveal} initial="hidden"
@@ -257,14 +276,14 @@ function App() {
           <motion.div className="editorial-image" initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.7 }}>
             <img src={images.hero} alt="Geometric detail of premium modern architecture" loading="lazy" />
-            <div className="image-caption">Architecture / Value / Place</div>
+            <div className="image-caption">Land / Development / Use</div>
           </motion.div>
           <motion.div className="editorial-copy" variants={reveal} initial="hidden" whileInView="visible"
             viewport={{ once: true, amount: 0.35 }} transition={{ duration: 0.65 }}>
-            <span className="eyebrow">Enduring Value</span><h2>Real Estate With A Long-Term Perspective</h2>
+            <span className="eyebrow">Enduring Value</span><h2>From Land To Lasting Use</h2>
             <div className="gold-rule" />
-            <p>Real estate is more than a physical asset. Location, timing, quality and thoughtful decision-making determine the value created over time.</p>
-            <p>At Chity Properties, our approach is centered around identifying meaningful opportunities and building enduring value through property.</p>
+            <p>Real estate is more than a physical asset. Acquisition, financing, construction, leasing and sale each shape the value created over time.</p>
+            <p>At Chity Properties, that mandate also extends to hospital, healthcare, spa and naturopathy-related businesses, and to working through contractors, developers and agents where appropriate.</p>
           </motion.div>
         </section>
 
@@ -272,7 +291,7 @@ function App() {
           <div className="why-texture" aria-hidden="true" />
           <div className="container">
             <SectionIntro eyebrow="How We Work" title="Why Chity Properties"
-              description="A considered approach to property, grounded in sound judgement and lasting relationships." light />
+              description="A considered approach to real estate, development and related healthcare businesses." light />
             <div className="principles-grid">
               {principles.map(([title, description, Icon], index) => (
                 <motion.article className="principle-card" key={title as string} variants={reveal} initial="hidden"
@@ -316,7 +335,7 @@ function App() {
         <section id="contact" className="contact-section section">
           <div className="container">
             <div className="contact-heading"><SectionIntro eyebrow="Begin A Conversation" title="Let’s Talk Property"
-              description="Whether you are exploring a property opportunity, looking to discuss an asset or simply want to connect with us, we would be pleased to hear from you." /></div>
+              description="Whether you are exploring acquisition, development, leasing or sale, considering a healthcare or wellness-related opportunity, or simply want to connect, we would be pleased to hear from you." /></div>
             <div className="contact-grid">
               <motion.form className="contact-form" onSubmit={submitForm} variants={reveal} initial="hidden"
                 whileInView="visible" viewport={{ once: true, amount: 0.15 }} transition={{ duration: 0.6 }}>
@@ -327,8 +346,13 @@ function App() {
                 <div className="form-row">
                   <label><span>Phone Number</span><input name="phone" type="tel" autoComplete="tel" placeholder="Your phone number" /></label>
                   <label><span>Subject / Enquiry Type *</span><select name="subject" required defaultValue="">
-                    <option value="" disabled>Select an enquiry type</option><option>Property Opportunity</option>
-                    <option>Asset Discussion</option><option>Business Partnership</option><option>General Enquiry</option>
+                    <option value="" disabled>Select an enquiry type</option>
+                    <option>Acquisition &amp; Land</option>
+                    <option>Development &amp; Construction</option>
+                    <option>Leasing, Renting or Sale</option>
+                    <option>Healthcare, Spa or Naturopathy</option>
+                    <option>Partnership or Agency</option>
+                    <option>General Enquiry</option>
                   </select></label>
                 </div>
                 <label><span>Message *</span><textarea name="message" required minLength={10} rows={5} placeholder="Tell us how we may assist you" /></label>
@@ -346,7 +370,7 @@ function App() {
                 <span className="eyebrow">Visit Us</span><div className="contact-icon"><Building2 size={27} strokeWidth={1.4} /></div>
                 <h3>Chity Properties<br />Private Limited</h3>
                 <address>3, Middle Road, Hastings<br />Kolkata, West Bengal<br />India – 700022</address>
-                <div className="contact-detail-rule" /><p>Property conversations begin with perspective. We welcome the opportunity to connect.</p>
+                <div className="contact-detail-rule" /><p>Conversations may begin with property, development or healthcare-related opportunities. We welcome the opportunity to connect.</p>
               </motion.aside>
             </div>
           </div>
@@ -356,7 +380,7 @@ function App() {
       <footer className="site-footer"><div className="container">
         <div className="footer-main">
           <div>
-            <Wordmark light /><p className="footer-tagline">Real Estate <i /> Property <i /> Opportunity</p>
+            <Wordmark light /><p className="footer-tagline">Real Estate <i /> Development <i /> Healthcare</p>
             <StartupIndiaBadge instanceId="footer" note="Recognised under the Startup India initiative" />
           </div>
           <address>3, Middle Road, Hastings<br />Kolkata, West Bengal, India – 700022</address>
