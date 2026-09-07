@@ -14,6 +14,11 @@ const images = {
   land: '/images/land.jpg',
 }
 
+const officeAddress = '3, Middle Road, Hastings, Kolkata, West Bengal, India 700022'
+const mapsQuery = encodeURIComponent(officeAddress)
+const mapsEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&z=17&hl=en&output=embed`
+const mapsLink = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
+
 const navItems = [
   ['Home', '#home'], ['About', '#about'], ['Properties', '#properties'],
   ['Why Chity', '#why-chity'], ['Contact', '#contact'],
@@ -231,10 +236,17 @@ function App() {
             </motion.div>
             <motion.div className="map-card" initial={{ opacity: 0, scale: 0.97 }}
               whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6 }} aria-label="Stylised map showing the Hastings, Kolkata office location">
-              <div className="map-road road-one" /><div className="map-road road-two" /><div className="map-road road-three" />
-              <div className="river">HOOGHLY RIVER</div><div className="map-pin"><MapPin size={25} fill="currentColor" /></div>
-              <div className="map-label"><small>Office</small><strong>Hastings</strong><span>Kolkata • 700022</span></div>
+              transition={{ duration: 0.6 }}>
+              <iframe
+                title="Google Map showing Chity Properties Private Limited at 3, Middle Road, Hastings, Kolkata"
+                src={mapsEmbedSrc}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+              <a className="map-open" href={mapsLink} target="_blank" rel="noreferrer">
+                Open in Google Maps
+              </a>
             </motion.div>
           </div>
         </section>
