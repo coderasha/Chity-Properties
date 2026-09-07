@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import type { FormEvent } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
-  ArrowDown, ArrowRight, Building2, Check, Clock3, Compass,
+  ArrowDown, ArrowRight, Boxes, Building2, Check, Clock3, Compass,
   Handshake, MapPin, Menu, Send, ShieldCheck, X,
 } from 'lucide-react'
 import './App.css'
@@ -41,6 +41,34 @@ const principles = [
   ['Relationship Driven', 'Strong relationships are central to how we work.', Handshake],
 ]
 const reveal = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } }
+
+// Startup India wordmark. Replace the markup here with the official artwork
+// file once approved brand assets are available.
+function StartupIndiaMark() {
+  return (
+    <svg className="startup-india-mark" viewBox="0 0 600 150" role="img" aria-label="Startup India">
+      <defs>
+        <linearGradient id="startupIndiaOrange" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#F04E23" />
+          <stop offset="1" stopColor="#F7941D" />
+        </linearGradient>
+      </defs>
+      <text x="4" y="104" textLength="466" lengthAdjust="spacingAndGlyphs"
+        fontSize="104" fontWeight="800" fill="url(#startupIndiaOrange)">#startupindia</text>
+      <polyline points="418,126 468,126 468,104 516,104 516,80 564,80 564,54"
+        fill="none" stroke="#3AB54A" strokeWidth="13" />
+    </svg>
+  )
+}
+
+function StartupIndiaBadge({ note }: { note: string }) {
+  return (
+    <div className="recognition-badge">
+      <span className="recognition-chip"><StartupIndiaMark /></span>
+      <p>{note}</p>
+    </div>
+  )
+}
 
 function Wordmark({ light = false }: { light?: boolean }) {
   return (
@@ -142,6 +170,13 @@ function App() {
               <a className="button button-gold" href="#about">Explore Our Approach <ArrowRight size={17} /></a>
               <a className="button button-ghost" href="#contact">Get in Touch</a>
             </div>
+            <div className="hero-recognition">
+              <span className="recognition-chip"><StartupIndiaMark /></span>
+              <p>
+                <strong>Recognised under the Startup India initiative.</strong>
+                Participant in the Blockchain India Challenge, currently at MVP stage.
+              </p>
+            </div>
           </motion.div>
           <a className="scroll-cue" href="#about" aria-label="Scroll to about section"><span>Discover</span><ArrowDown size={16} /></a>
         </section>
@@ -160,6 +195,7 @@ function App() {
                 <p className="lead">Chity Properties Private Limited is a real estate and property company based in Kolkata, West Bengal.</p>
                 <p>We focus on identifying, managing and creating value through real estate opportunities while maintaining a long-term perspective and a commitment to professionalism.</p>
                 <p>With our presence in Hastings, Kolkata, we operate with an appreciation for the importance of location, asset quality and lasting relationships.</p>
+                <p>Chity Properties is recognised under the Startup India initiative and is a participant in the Blockchain India Challenge, currently in the advanced MVP stage of the programme.</p>
               </motion.div>
             </div>
             <div className="highlights-grid">
@@ -170,6 +206,31 @@ function App() {
                   <span>{number}</span><div><h3>{title}</h3><p>{description}</p></div>
                 </motion.article>
               ))}
+            </div>
+
+            <div className="recognition-block">
+              <motion.div variants={reveal} initial="hidden" whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6 }}>
+                <span className="eyebrow">Recognition</span>
+                <h3 className="recognition-heading">National programmes we are part of</h3>
+              </motion.div>
+              <div className="recognition-grid">
+                <motion.article className="recognition-card" variants={reveal} initial="hidden"
+                  whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.55 }}>
+                  <span className="recognition-chip recognition-chip-lg"><StartupIndiaMark /></span>
+                  <p className="recognition-kicker">Recognised under Startup India</p>
+                  <p>Chity Properties Private Limited is recognised under the Startup India initiative of the Government of India.</p>
+                </motion.article>
+                <motion.article className="recognition-card" variants={reveal} initial="hidden"
+                  whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.55, delay: 0.08 }}>
+                  <div className="challenge-lockup" aria-hidden="true">
+                    <Boxes size={22} strokeWidth={1.4} />
+                    <span>Blockchain India Challenge</span>
+                  </div>
+                  <p className="recognition-kicker">Participant · Advanced stage · MVP</p>
+                  <p>The company has participated in the Blockchain India Challenge and is in the advanced stages of the programme, currently at the MVP (Minimum Viable Product) stage.</p>
+                </motion.article>
+              </div>
             </div>
           </div>
         </section>
@@ -293,7 +354,10 @@ function App() {
 
       <footer className="site-footer"><div className="container">
         <div className="footer-main">
-          <div><Wordmark light /><p className="footer-tagline">Real Estate <i /> Property <i /> Opportunity</p></div>
+          <div>
+            <Wordmark light /><p className="footer-tagline">Real Estate <i /> Property <i /> Opportunity</p>
+            <StartupIndiaBadge note="Recognised under the Startup India initiative" />
+          </div>
           <address>3, Middle Road, Hastings<br />Kolkata, West Bengal, India – 700022</address>
           <nav aria-label="Footer navigation">{navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
         </div>
