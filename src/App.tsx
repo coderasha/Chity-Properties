@@ -44,27 +44,28 @@ const reveal = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0 } }
 
 // Startup India wordmark. Replace the markup here with the official artwork
 // file once approved brand assets are available.
-function StartupIndiaMark() {
+function StartupIndiaMark({ instanceId }: { instanceId: string }) {
+  const gradientId = `startupIndiaOrange-${instanceId}`
   return (
-    <svg className="startup-india-mark" viewBox="0 0 600 150" role="img" aria-label="Startup India">
+    <svg className="startup-india-mark" viewBox="0 18 578 122" role="img" aria-label="Startup India">
       <defs>
-        <linearGradient id="startupIndiaOrange" x1="0" y1="0" x2="1" y2="0">
+        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
           <stop offset="0" stopColor="#F04E23" />
           <stop offset="1" stopColor="#F7941D" />
         </linearGradient>
       </defs>
       <text x="4" y="104" textLength="466" lengthAdjust="spacingAndGlyphs"
-        fontSize="104" fontWeight="800" fill="url(#startupIndiaOrange)">#startupindia</text>
-      <polyline points="418,126 468,126 468,104 516,104 516,80 564,80 564,54"
+        fontSize="104" fontWeight="800" fill={`url(#${gradientId})`}>#startupindia</text>
+      <polyline points="418,126 468,126 468,102 516,102 516,76 564,76 564,46"
         fill="none" stroke="#3AB54A" strokeWidth="13" />
     </svg>
   )
 }
 
-function StartupIndiaBadge({ note }: { note: string }) {
+function StartupIndiaBadge({ instanceId, note }: { instanceId: string; note: string }) {
   return (
     <div className="recognition-badge">
-      <span className="recognition-chip"><StartupIndiaMark /></span>
+      <span className="recognition-chip"><StartupIndiaMark instanceId={instanceId} /></span>
       <p>{note}</p>
     </div>
   )
@@ -171,7 +172,7 @@ function App() {
               <a className="button button-ghost" href="#contact">Get in Touch</a>
             </div>
             <div className="hero-recognition">
-              <span className="recognition-chip"><StartupIndiaMark /></span>
+              <span className="recognition-chip"><StartupIndiaMark instanceId="hero" /></span>
               <p>
                 <strong>Recognised under the Startup India initiative.</strong>
                 Participant in the Blockchain India Challenge, currently at MVP stage.
@@ -217,7 +218,7 @@ function App() {
               <div className="recognition-grid">
                 <motion.article className="recognition-card" variants={reveal} initial="hidden"
                   whileInView="visible" viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.55 }}>
-                  <span className="recognition-chip recognition-chip-lg"><StartupIndiaMark /></span>
+                  <span className="recognition-chip recognition-chip-lg"><StartupIndiaMark instanceId="about" /></span>
                   <p className="recognition-kicker">Recognised under Startup India</p>
                   <p>Chity Properties Private Limited is recognised under the Startup India initiative of the Government of India.</p>
                 </motion.article>
@@ -356,7 +357,7 @@ function App() {
         <div className="footer-main">
           <div>
             <Wordmark light /><p className="footer-tagline">Real Estate <i /> Property <i /> Opportunity</p>
-            <StartupIndiaBadge note="Recognised under the Startup India initiative" />
+            <StartupIndiaBadge instanceId="footer" note="Recognised under the Startup India initiative" />
           </div>
           <address>3, Middle Road, Hastings<br />Kolkata, West Bengal, India – 700022</address>
           <nav aria-label="Footer navigation">{navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</nav>
