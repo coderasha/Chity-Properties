@@ -15,9 +15,9 @@ const images = {
 }
 
 const officeAddress = '3, Middle Road, Hastings, Kolkata, West Bengal, India 700022'
-const mapsQuery = encodeURIComponent(officeAddress)
-const mapsEmbedSrc = `https://www.google.com/maps?q=${mapsQuery}&z=17&hl=en&output=embed`
-const mapsLink = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
+const officeCoordinates = { lat: 22.5487543, lng: 88.3283314 }
+const mapsEmbedSrc = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d900!2d${officeCoordinates.lng}!3d${officeCoordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s${encodeURIComponent(officeAddress)}!5e0!3m2!1sen!2sin`
+const mapsLink = `https://www.google.com/maps?q=${officeCoordinates.lat},${officeCoordinates.lng}+(${encodeURIComponent('Chity Properties Private Limited, 3, Middle Road, Hastings')})`
 
 const navItems = [
   ['Home', '#home'], ['About', '#about'], ['Properties', '#properties'],
